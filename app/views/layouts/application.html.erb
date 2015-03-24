@@ -7,39 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="container wrap">
-  <div class="row">
-    <div class="col-xs-12">
-      <header>
-        <div class="well"><%= link_to 'Elevennit', root_path %></div>
-      </header>
-    </div>
-  </div>
-  <div class="container">
+  <div class="container wrap">
     <div class="row">
-      <div class="col-xs-8">
-        <main>
-          <div class="well">
-            <!-- BEGIN main content -->
-            <%= yield %>
-            <!-- END main content -->
-          </div>
-        </main>
-      </div>
-      <div class="col-xs-4">
-        <nav id="sidebar">
-          <div class="well"><%= link_to 'Submit a new link', new_post_path %></div>
-        </nav>
+      <div class="col-xs-12">
+        <header><%= link_to 'Elevennit', root_path %></header>
       </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8">
+          <main>
+              <!-- BEGIN main content -->
+              <%= yield %>
+              <!-- END main content -->
+          </main>
+        </div>
+        <div class="col-xs-4">
+          <nav id="sidebar"><%= link_to 'Submit a new link', new_post_path %>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="push"></div>
   </div>
-  <div class="push"></div>
-</div>
 
-<footer>
-  <div class="well">Use of this site constitutes acceptance of the <a href="http://dresdenfiles.wikia.com/wiki/Unseelie_Accords">Unseelie Accords</a>.</div>
-  </div>
-</footer>
+  <footer>Use of this site constitutes acceptance of the <a href="http://dresdenfiles.wikia.com/wiki/Unseelie_Accords">Unseelie Accords</a>.</div>
+  </footer>
 </body>
 </html>
