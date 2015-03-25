@@ -1,7 +1,7 @@
   <ul class="posts">
   <% @posts.each do |post| %>
     <li>
-      <div class="title"><a href="<%= post.link %>"><%= post.title %></a></div>
+      <div class="title"><a href="<%= post_url(post) %>"><%= post.title %></a></div>
       <div class="tagline" title="<%= post.created_at %>">
         submitted <%= time_ago_in_words post.created_at %> ago
       </div>
