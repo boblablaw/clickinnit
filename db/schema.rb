@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150322145646) do
   enable_extension "plpgsql"
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",      limit: 250
     t.string   "link",       limit: 2000
     t.text     "body"
     t.datetime "created_at"
