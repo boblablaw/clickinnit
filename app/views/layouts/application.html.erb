@@ -17,9 +17,22 @@
       <div class="row">
         <div class="col-xs-8">
           <main>
-              <!-- BEGIN main content -->
-              <%= yield %>
-              <!-- END main content -->
+            <% flash.each do |name, msg| -%>
+              <% if msg.is_a? Array -%>
+                <div class="<%= name %>">
+                  <ul>
+                    <% msg.each do |message| -%>
+                      <li><%= message %></li>
+                    <% end -%>
+                  </ul>
+                </div>
+              <% else -%>
+                <%= content_tag :div, msg, class: name %>
+              <% end -%>
+            <% end -%>
+            <!-- BEGIN main content -->
+            <%= yield %>
+            <!-- END main content -->
           </main>
         </div>
         <div class="col-xs-4">
