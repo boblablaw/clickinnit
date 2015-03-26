@@ -13,6 +13,10 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def show
+    @category = Category.includes(:posts).find params[:id]
+  end
+
   private
 
   def category_params
