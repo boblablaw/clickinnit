@@ -4,4 +4,7 @@
   <% if @post.text? -%>
     <section class="body"><%= @post.body %></section>
   <% end -%>
+  <ul class="actions">
+    <li><%= link_to 'edit', edit_post_path(@post) %></li>
+  </ul>
 </article>
