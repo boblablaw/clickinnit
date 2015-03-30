@@ -288,3 +288,15 @@ nav#sidebar {
     overflow: hidden;
   }
 }
+
+#session-actions {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  background-color: #EFF7FF;
+  padding: 4px;
+  margin-bottom: 10px;
+  line-height: 12px;
+  border-top-left-radius: 7px;
+  font-size: x-small;
+}
