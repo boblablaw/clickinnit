@@ -1,2 +1,5 @@
 <div class="title"><a href="<%= post_url(post) %>"><%= post.title %></a></div>
-<div class="tagline" title="<%= post.created_at %>">submitted <%= time_ago_in_words post.created_at %> ago</div>
+<div class="tagline" title="<%= post.created_at %>">
+  submitted <%= time_ago_in_words post.created_at %> ago
+  to <%= link_to post.category.name, category_path(post.category) %>
+</div>
