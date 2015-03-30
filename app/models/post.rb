@@ -6,4 +6,6 @@ class Post < ActiveRecord::Base
   enum post_type: [:link, :text]
   belongs_to :category
   default_scope { order('updated_at DESC').includes(:category) }
+
+  self.per_page = 6
 end
