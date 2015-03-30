@@ -1,8 +1,0 @@
-<ul class="posts">
-<% @category.posts.each do |post| %>
-  <li>
-    <%= render 'slug', post: post%>
-    <%= render 'actions', post: post %>
-  </li>
-<% end %>
-</ul>
