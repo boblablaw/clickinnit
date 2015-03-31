@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new post_params
+    post.user_id = current_user.id
     if post.save
       redirect_to posts_path, flash: { notice: "Your post was saved successfully" }
     else
@@ -50,7 +51,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :link, :body, :post_type, :category_id)
+    params.require(:post).permit(:title, :link, :body, :post_type, :category_id, :user_id)
   end
 
   def find_post

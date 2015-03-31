@@ -5,7 +5,8 @@ class Post < ActiveRecord::Base
   validates :category_id, presence: true
   enum post_type: [:link, :text]
   belongs_to :category
-  default_scope { order('updated_at DESC').includes(:category) }
+  belongs_to :user
+  default_scope { order('updated_at DESC').includes(:category).includes(:user) }
 
   self.per_page = 6
 end
