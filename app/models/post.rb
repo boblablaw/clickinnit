@@ -8,5 +8,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   default_scope { order('updated_at DESC').includes(:category).includes(:user) }
 
+  # gem configurations
   self.per_page = 6
+  acts_as_commentable
 end
