@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.includes(:comment_threads).page(params[:page])
   end
 
   def new
