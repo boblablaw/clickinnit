@@ -30,6 +30,9 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @post.user.username != current_user.username
+      redirect_to posts_path, flash: { error: 'Unable to edit this post' }
+    end
   end
 
   def destroy
