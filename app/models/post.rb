@@ -11,4 +11,5 @@ class Post < ActiveRecord::Base
   # gem configurations
   self.per_page = 6
   acts_as_commentable
+  acts_as_votable
 end

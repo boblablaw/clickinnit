@@ -28,6 +28,7 @@ gem 'pry-rails', group: [:development, :test]
 gem 'will_paginate'
 gem 'devise'
 gem 'acts_as_commentable_with_threading'
+gem 'acts_as_votable', '~> 0.10.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
