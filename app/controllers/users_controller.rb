@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def show
-    @post = User.includes(:posts).find params(:id)
+    @user = User.find(params[:id])
+    @posts = @user.posts.page(params[:page])
   end
 
 end
