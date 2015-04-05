@@ -1,10 +1,11 @@
 <ul class="posts">
-<% posts.each do |post| %>
-  <li>
-    <%= render 'posts/slug', post: post%>
-    <%= render 'posts/actions', post: post %>
-  </li>
-<% end %>
+  <% posts.each do |post| %>
+    <li>
+        <%= render 'posts/votes', post: post %>
+        <%= render 'posts/slug', post: post %>
+        <%= render 'posts/actions', post: post %>
+    </li>
+  <% end %>
 </ul>
 
 <%= will_paginate posts %>

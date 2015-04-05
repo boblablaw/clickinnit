@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
   enum post_type: [:link, :text]
   belongs_to :category
   belongs_to :user
-  default_scope { order('updated_at DESC').includes(:category).includes(:user) }
+  default_scope { order(:cached_votes_up => :desc).includes(:category).includes(:user) }
 
   # gem configurations
   self.per_page = 6

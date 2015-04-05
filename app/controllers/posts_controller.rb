@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authorized_user, only: [:edit, :update, :destroy]
   def index
     @posts = Post.includes(:comment_threads).page(params[:page])
   end
@@ -30,18 +31,18 @@ class PostsController < ApplicationController
   end
 
   def edit
-    if @post.user.username != current_user.username
-      redirect_to posts_path, flash: { error: 'Unable to edit this post' }
-    end
   end
 
-  def destroy
-    post = Post.find params[:id]
-    if post.destroy
-      redirect_to posts_path, flash: { notice: 'Your post has been removed.' }
-    else
-      redirect_to posts_path, flash: { notice: 'We were unable to remove that post.' }
-    end
+  def upvote
+    @post = Post.find params[:id]
+    @post.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @post = Post.find params[:id]
+    @post.downvote_by current_user
+    redirect_to :back
   end
 
   def update
@@ -54,6 +55,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    post = Post.find params[:id]
+    if post.destroy
+      redirect_to posts_path, flash: { notice: 'Your post has been removed.' }
+    else
+      redirect_to posts_path, flash: { notice: 'We were unable to remove that post.' }
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :link, :body, :post_type, :category_id, :user_id)
@@ -61,5 +71,10 @@ class PostsController < ApplicationController
 
   def find_post
     @post = Post.find params[:id]
+  end
+
+  def authorized_user
+    @post = current_user.posts.find_by(id: params[:id])
+    redirect_to posts_path, notice: 'Not authorized to edit this post' if @post.nil?
   end
 end
