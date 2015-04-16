@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Elevennit</title>
+  <title>Clickinnit</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -35,7 +35,7 @@
           </ul>
         </nav>
         <header>
-          <%= link_to 'Elevennit', posts_path %>
+          <%= link_to 'Clickinnit', posts_path %>
           <div id="session-actions">
             <% if user_signed_in? -%>
               <%= link_to current_user.username, edit_user_registration_path(current_user) %>
