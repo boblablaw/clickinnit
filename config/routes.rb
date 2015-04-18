@@ -63,6 +63,11 @@ Rails.application.routes.draw do
       put "dislike", to: "posts#downvote"
     end
   end
+  resources :posts do
+    member do
+      post :save
+    end
+  end
   resources :categories
   resources :comments, only: [:create, :new]
   resources :users, only: [:show]

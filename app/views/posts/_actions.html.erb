@@ -1,7 +1,12 @@
-<ul class="actions">
-  <li><%= link_to "#{post.comment_threads.length} #{'comment'.pluralize(post.comment_threads.length)}", post_path(post, anchor: 'comments') %></li>
-  <% if post.user == current_user -%>
+<% if user_signed_in? -%>
+  <ul class="actions">
+    <li><%= link_to comment_link_text(post.comment_threads.length), post_path(post, anchor: 'comments') %></li>
     <li><%= link_to 'edit', edit_post_path(post) %></li>
-    <li><%= link_to 'delete', post_path(post), method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' } %></li>
-  <% end %>
-</ul>
+    <li>
+      <%= link_to 'delete', post_path(post), method: :delete, data: { confirm: 'Are you sure? This cannot be undone.' } %>
+    </li>
+    <li>
+      <%= link_to 'save', save_post_path(post), method: :post %>
+    </li>
+  </ul>
+<% end -%>

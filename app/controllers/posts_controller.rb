@@ -25,6 +25,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def save
+    ElevenNote.create_from @post
+    redirect_to @post, notice: 'Saved to ElevenNote!'
+  rescue
+    redirect_to @post, alert: 'We were unable to save that to ElevenNote.'
+  end
+
   def show
     @post = Post.find params[:id]
     @comment = Comment.build_from(@post, current_user.id, '')
