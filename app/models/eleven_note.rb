@@ -21,7 +21,7 @@ class ElevenNote
         api_key: API_KEY,
         note: {
           title: post.title,
-          body_html: content
+          body_text: content
         }
       }
   end
